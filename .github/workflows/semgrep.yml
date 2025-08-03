@@ -4,6 +4,9 @@ on: [push, pull_request]
 
 jobs:
   semgrep:
+    permissions:
+      security-events: write
+      contents: read
     runs-on: ubuntu-latest
     container:
       image: returntocorp/semgrep
