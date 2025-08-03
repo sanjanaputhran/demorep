@@ -1,9 +1,21 @@
+<!DOCTYPE html>
 <html>
-<head>
-<title>
+<head><title>Index</title></head>
+<body>
+  <h2>Welcome</h2>
+  <div id="greeting"></div>
 
-This is my app22
-<script>alert('XSS Vulnerability Triggered!');</script>
-</title>
-</head>
+  <script>
+    // Simple function to get query params
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param) || '';
+    }
+
+    // Vulnerable: inserting unsanitized user input into innerHTML
+    const username = getQueryParam('username');
+    document.getElementById('greeting').innerHTML = `Hello, ${username}!`;
+  </script>
+</body>
 </html>
+
